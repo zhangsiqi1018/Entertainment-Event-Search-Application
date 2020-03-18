@@ -15,17 +15,17 @@ public class ApiCall {
     private RequestQueue mRequestQueue;
     private static Context mCtx;
 
-    public ApiCall(Context ctx) {
+    //Singleton pattern
+    private ApiCall(Context ctx) {
         mCtx = ctx;
         mRequestQueue = getRequestQueue();
     }
-
     public static synchronized ApiCall getInstance(Context context) {
         if (mInstance == null) {
             mInstance = new ApiCall(context);
         }
         return mInstance;
-    }
+    
 
     public RequestQueue getRequestQueue() {
         if (mRequestQueue == null) {
